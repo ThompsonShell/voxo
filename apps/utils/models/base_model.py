@@ -1,5 +1,4 @@
 import uuid
-from socket import create_server
 
 from django.db import models
 from django.conf import settings
@@ -9,7 +8,7 @@ class AbstractBaseModel(models.Model):
     Abstract base model with common fields for all models.
 
     Attributes:
-            created_at (DateTimeField): Timestamp when the object is created.
+         created_at (DateTimeField): Timestamp when the object is created.
          updated_at (DateTimeField): Timestamp when the object is last updated.
     """
 
@@ -24,8 +23,8 @@ class AbstractBaseModel(models.Model):
         related_name='+',
     )
 
-    updated_by = models.DateTimeField(
-        auto_now=True,
+    updated_by = models.ForeignKey(
+        to=settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
         null=True,
         related_name='+',

@@ -18,7 +18,6 @@ class Product(AbstractBaseModel):
     quantity = models.PositiveSmallIntegerField(default=1)
     price = models.PositiveSmallIntegerField(default=0)
     published = models.BooleanField(default=False)
-    option = models.ManyToManyField(Option, blank=True)
     videos = models.FileField(upload_to='videos/')
     description = models.TextField(max_length=500, blank=True)
     weight = models.PositiveSmallIntegerField(default=0)
