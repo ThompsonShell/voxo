@@ -1,61 +1,43 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, View
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-# def home(request):
-#     return render(request, 'index.html')
 
 
 class HomeView(View):
     def get(self, request):
         return render(request, 'index.html')
 
+# ====== AddNewProductView ======
+class AddNewProductView(LoginRequiredMixin, View):
+    def post(self, request):
+        return render(request, 'pages/add-new-product.html')
+
+# ====== AddNewUserView ======
+class AddNewUserView(LoginRequiredMixin, View):
+    def post(self, request):
+        return render(request, 'pages/add-new-user.html')
+
+#======  CreateCouponView ======
+class CreateCouponView(LoginRequiredMixin, View):
+    def post(self, request):
+        return render(request, 'pages/create-coupon.html')
+
+#======  CreateMenuView ======
+class CreateMenuView(LoginRequiredMixin, View):
+    def post(self, request):
+        return render(request, 'pages/create-menu.html')
+
 
 def users(request):
     return render(request, 'pages/all-users.html')
 
-# def add_user(request):
-#     return render(request, 'pages/add-new-user.html')
-#
-# def orders(request):
-#     return render(request, 'pages/order-list.html')
-#
-# def order_detail(request):
-#     return render(request, 'pages/order-detail.html')
-#
-# def order_tracking(request):
-#     return render(request, 'pages/order-tracking.html')
-#
-# def vendors(request):
-#     return render(request, 'pages/vendor-list.html')
-#
-# def add_vendor(request):
-#     return render(request, 'pages/create-vendor.html')
-
-
-
-
-# Function-based views
-def add_new_product(request):
-    return render(request, 'pages/add-new-product.html')
-
-def add_new_user(request):
-    return render(request, 'pages/add-new-user.html')
 
 def all_users(request):
     return render(request, 'pages/all-users.html')
 
 def coupon_list(request):
     return render(request, 'pages/coupon-list.html')
-
-def create_coupon(request):
-    return render(request, 'pages/create-coupon.html')
-
-def create_menu(request):
-    return render(request, 'pages/create-menu.html')
-
-def create_vendor(request):
-    return render(request, 'pages/create-vendor.html')
 
 def currency_rates(request):
     return render(request, 'pages/currency-rates.html')
@@ -107,6 +89,3 @@ def taxes(request):
 
 def translation(request):
     return render(request, 'pages/translation.html')
-
-def vendor_list(request):
-    return render(request, 'pages/vendor-list.html')

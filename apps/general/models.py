@@ -4,6 +4,7 @@ from apps.utils.models.base_model import AbstractBaseModel
 
 class Menu(AbstractBaseModel):
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True, editable=False)
     status = models.BooleanField(default=True)
     checked = models.BooleanField(default=False)
     description = models.TextField(blank=True)
